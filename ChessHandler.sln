@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{51CA83D7-277F-4C77-A5E4-DA20409A40DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessHandler.Core", "src\ChessHandler.Core\ChessHandler.Core.csproj", "{B72CE326-1BBF-40F5-8BF3-F0D49183C69B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessHandler.Application", "src\ChessHandler.Application\ChessHandler.Application.csproj", "{AF9985FC-BC0F-4C14-A791-F293703E14FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E61664D4-5054-40AF-91E9-2A0E54EFED88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessHandler.Test", "tests\ChessHandler.Test\ChessHandler.Test.csproj", "{D1DB82F8-7A3A-4EEB-AE21-31E9A8C3426A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessHandler.Infrastructure", "src\ChessHandler.Infrastructure\ChessHandler.Infrastructure.csproj", "{599F23D4-2B09-406C-B9EF-40004B122732}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessHandler.Api", "src\ChessHandler.Api\ChessHandler.Api.csproj", "{82626666-8217-456B-AB41-7BC23610C708}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B72CE326-1BBF-40F5-8BF3-F0D49183C69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72CE326-1BBF-40F5-8BF3-F0D49183C69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72CE326-1BBF-40F5-8BF3-F0D49183C69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72CE326-1BBF-40F5-8BF3-F0D49183C69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF9985FC-BC0F-4C14-A791-F293703E14FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9985FC-BC0F-4C14-A791-F293703E14FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9985FC-BC0F-4C14-A791-F293703E14FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9985FC-BC0F-4C14-A791-F293703E14FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1DB82F8-7A3A-4EEB-AE21-31E9A8C3426A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DB82F8-7A3A-4EEB-AE21-31E9A8C3426A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DB82F8-7A3A-4EEB-AE21-31E9A8C3426A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DB82F8-7A3A-4EEB-AE21-31E9A8C3426A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{599F23D4-2B09-406C-B9EF-40004B122732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599F23D4-2B09-406C-B9EF-40004B122732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599F23D4-2B09-406C-B9EF-40004B122732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599F23D4-2B09-406C-B9EF-40004B122732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82626666-8217-456B-AB41-7BC23610C708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82626666-8217-456B-AB41-7BC23610C708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82626666-8217-456B-AB41-7BC23610C708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82626666-8217-456B-AB41-7BC23610C708}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B72CE326-1BBF-40F5-8BF3-F0D49183C69B} = {51CA83D7-277F-4C77-A5E4-DA20409A40DC}
+		{AF9985FC-BC0F-4C14-A791-F293703E14FC} = {51CA83D7-277F-4C77-A5E4-DA20409A40DC}
+		{D1DB82F8-7A3A-4EEB-AE21-31E9A8C3426A} = {E61664D4-5054-40AF-91E9-2A0E54EFED88}
+		{599F23D4-2B09-406C-B9EF-40004B122732} = {51CA83D7-277F-4C77-A5E4-DA20409A40DC}
+		{82626666-8217-456B-AB41-7BC23610C708} = {51CA83D7-277F-4C77-A5E4-DA20409A40DC}
+	EndGlobalSection
+EndGlobal
