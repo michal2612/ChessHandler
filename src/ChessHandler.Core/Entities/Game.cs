@@ -11,7 +11,7 @@ public class Game
     public GamePlayer Black { get; set; }
     
     public GameResult Result { get; set; }
-
+    
     public GameFormat Format { get; set; }
 
     public string Moves { get; set; }

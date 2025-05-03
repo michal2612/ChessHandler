@@ -8,6 +8,4 @@ public interface ILichessPlayerRepository
     Task<IEnumerable<GamePlayer>> GetAllAsync();
     
     Task AddAsync(GamePlayer  player);
-    Task UpdateAsync(GamePlayer  player);
-    Task DeleteAsync(GamePlayer  player);
 }

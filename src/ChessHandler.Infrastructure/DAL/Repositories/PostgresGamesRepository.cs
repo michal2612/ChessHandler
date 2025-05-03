@@ -1,32 +1,23 @@
 using ChessHandler.Core.Entities;
 using ChessHandler.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChessHandler.Infrastructure.DAL.Repositories;
 
 public class PostgresGamesRepository : ILichessGameRepository
 {
-    public Task<Game> GetAsync(string gameId)
+    private readonly DbSet<Game> _games;
+
+    public PostgresGamesRepository(LichessGamesDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _games = dbContext.Games;
     }
 
-    public Task<IEnumerable<Game>> GetAllAsync(DateTime since, uint max = 100)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Game> GetAsync(int gameId)
+        => await _games.SingleOrDefaultAsync(g => g.Id == gameId);
 
-    public Task AddAsync(Game game)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<IEnumerable<Game>> GetAllAsync(DateTime since, uint max = 100)
+        => await _games.Take((int)max).ToListAsync();
 
-    public Task UpdateAsync(Game game)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteAsync(Game game)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task AddAsync(Game game) => await _games.AddAsync(game);
 }

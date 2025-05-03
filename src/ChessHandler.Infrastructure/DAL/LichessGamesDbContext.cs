@@ -1,11 +1,13 @@
-using LichessNET.Entities.Game;
+using ChessHandler.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChessHandler.Infrastructure.DAL;
 
-internal sealed class LichessGamesDbContext : DbContext
+public sealed class LichessGamesDbContext : DbContext
 {
-    public DbSet<IEnumerable<Game>> Games { get; set; }
+    public DbSet<Game> Games { get; set; }
+
+    public DbSet<GamePlayer> Players { get; set; }
 
     public LichessGamesDbContext(DbContextOptions<LichessGamesDbContext> options)
         : base(options)
