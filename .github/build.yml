@@ -1,0 +1,21 @@
+name: dotnet package
+
+on: [push]
+
+env:
+  DOTNET_VERSION: '9.0.x'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ DOTNET_VERSION }}
+          
+      - name: Build project
+        run: dotnet build
