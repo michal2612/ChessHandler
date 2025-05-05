@@ -1,6 +1,5 @@
+using ChessHandler.Api;
 using ChessHandler.Infrastructure;
-using ChessHandler.Infrastructure.DAL;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +8,8 @@ builder.Services
     .AddInstrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+app.AddEndpoints();
 
 app.UseHttpsRedirection();
 

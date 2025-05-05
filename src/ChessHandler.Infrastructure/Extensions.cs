@@ -1,3 +1,4 @@
+using ChessHandler.Application;
 using ChessHandler.Infrastructure.DAL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +10,7 @@ public static class Extensions
     public static IServiceCollection AddInstrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddPostgres(configuration);
+        services.AddApp();
         
         return services;
     }
