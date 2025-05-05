@@ -15,7 +15,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: $DOTNET_VERSION
+          dotnet-version: ${{ env.DOTNET_VERSION }}
           
       - name: Build project
         run: dotnet build
