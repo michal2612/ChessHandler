@@ -1,7 +1,9 @@
 using ChessHandler.Application.DTO;
 using ChessHandler.Application.Exceptions;
 using ChessHandler.Core.Entities;
+using LichessNET.Entities.Enumerations;
 using Game = LichessNET.Entities.Game.Game;
+using GameResult = ChessHandler.Core.Entities.GameResult;
 
 namespace ChessHandler.Application.Lichess;
 
@@ -12,8 +14,18 @@ public static class Extensions
         return new()
         {
             Rated = true, // TODO
-            White = new(),
-            Black = new(),
+            White = new GamePlayerDto()
+            {
+                Name = game.White.Name,
+                Title = game.White.Title.ParseTitle(),
+                Rating = game.White.Rating
+            },
+            Black = new GamePlayerDto
+            {
+                Name = game.Black.Name,
+                Title = game.Black.Title.ParseTitle(),
+                Rating = game.Black.Rating
+            },
             Result = game.Result.ToResult(),
             Format = GameFormat.Blitz,
             Moves = game.Moves.OriginalPgn
@@ -30,4 +42,6 @@ public static class Extensions
             _ => throw new InvalidResultException(result.ToString())
         };
     }
+
+    public static PlayerTitle ParseTitle(this Title? title) => PlayerTitle.None; // TODO
 }

@@ -4,9 +4,9 @@ namespace ChessHandler.Application.DTO;
 
 public class GamePlayerDto
 {
-    public string Name { get; }
+    public string Name { get; set; }
 
-    public PlayerTitle Title { get; }
+    public PlayerTitle Title { get; set; }
 
-    public int Rating { get; }
+    public int Rating { get; set; }
 }
