@@ -2,6 +2,7 @@
 using ChessHandler.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChessHandler.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(LichessGamesDbContext))]
-    partial class LichessGamesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250506163627_ModelsUpToDate")]
+    partial class ModelsUpToDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,16 +67,6 @@ namespace ChessHandler.Infrastructure.DAL.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Title")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

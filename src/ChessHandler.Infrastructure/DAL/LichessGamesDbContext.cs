@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChessHandler.Infrastructure.DAL;
 
-public sealed class LichessGamesDbContext : DbContext
+internal sealed class LichessGamesDbContext : DbContext
 {
     public DbSet<Game> Games { get; set; }
 

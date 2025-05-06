@@ -4,20 +4,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChessHandler.Infrastructure.DAL.Repositories;
 
-public class PostgresGamesRepository : ILichessGameRepository
+internal sealed class PostgresGamesRepository(LichessGamesDbContext dbContext)
+    : IGamesRepository
 {
-    private readonly DbSet<Game> _games;
-
-    public PostgresGamesRepository(LichessGamesDbContext dbContext)
-    {
-        _games = dbContext.Games;
-    }
+    private readonly DbSet<Game> _games = dbContext.Games;
 
     public async Task<Game> GetAsync(int gameId)
         => await _games.SingleOrDefaultAsync(g => g.Id == gameId);
 
     public async Task<IEnumerable<Game>> GetAllAsync(DateTime since, uint max = 100)
-        => await _games.Take((int)max).ToListAsync();
+        => await _games
+            .Include(g => g.White)
+            .Include(g => g.Black)
+            .Take((int)max).
+            ToListAsync();
 
-    public async Task AddAsync(Game game) => await _games.AddAsync(game);
+    public async Task AddAsync(Game game)
+    {
+        await _games.AddAsync(game);
+        await dbContext.SaveChangesAsync();
+    }
 }

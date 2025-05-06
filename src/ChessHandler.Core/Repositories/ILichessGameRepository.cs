@@ -2,7 +2,7 @@ using ChessHandler.Core.Entities;
 
 namespace ChessHandler.Core.Repositories;
 
-public interface ILichessGameRepository
+public interface IGamesRepository
 {
     Task<Game> GetAsync(int gameId);
     Task<IEnumerable<Game>> GetAllAsync(DateTime since, uint max = 100);

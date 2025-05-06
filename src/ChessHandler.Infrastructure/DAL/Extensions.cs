@@ -10,6 +10,8 @@ internal static class Extensions
 {
     private const string OptionsSectionName = "postgres";
     
+    private const string UseInMemoryDatabase = "UseInMemoryDatabase";
+    
     public static IServiceCollection AddPostgres(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<PostgresOptions>(configuration.GetRequiredSection(OptionsSectionName));
@@ -21,8 +23,7 @@ internal static class Extensions
 
         services.AddHostedService<DbInitializer>();
         
-        services.AddScoped<ILichessGameRepository, PostgresGamesRepository>();
-        services.AddScoped<ILichessPlayerRepository, PostgresPlayersRepository>();
+        services.AddScoped<IGamesRepository, PostgresGamesRepository>();
         
         return services;
     }

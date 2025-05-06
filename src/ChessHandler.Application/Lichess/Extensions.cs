@@ -32,6 +32,29 @@ public static class Extensions
         };
     }
 
+    public static ChessHandler.Core.Entities.Game FromDto(this GameDto dto)
+    {
+        return new Core.Entities.Game
+        {
+            Rated = dto.Rated,
+            White = new GamePlayer()
+            {
+                Name = dto.White.Name,
+                Rating = dto.White.Rating,
+                Title = dto.White.Title
+            },
+            Black = new GamePlayer()
+            {
+                Name = dto.Black.Name,
+                Rating = dto.Black.Rating,
+                Title = dto.Black.Title
+            },
+            Result = dto.Result,
+            Format = dto.Format,
+            Moves = dto.Moves
+        };
+    }
+
     public static GameResult ToResult(this LichessNET.Entities.Enumerations.GameResult result)
     {
         return result switch
