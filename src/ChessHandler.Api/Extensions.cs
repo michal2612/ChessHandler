@@ -1,5 +1,6 @@
 using ChessHandler.Application.Lichess;
 using ChessHandler.Core.Repositories;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ChessHandler.Api;
 
@@ -14,7 +15,7 @@ public static class Extensions
         app.MapPut($"/{lichessPrefix}/{{id}}", 
             async (string id, LichessService service, IGamesRepository repository) =>
         {
-            var games = await service.GetGamesForUser(id).ConfigureAwait(false);
+            var games = await service.GetGamesForUser(id, 50_000).ConfigureAwait(false);
 
             foreach (var game in games) await repository.AddAsync(game.FromDto());
         });
@@ -27,6 +28,10 @@ public static class Extensions
             var games = await repository.GetAllAsync(DateTime.Now);
             return games;
         });
+
+        app.MapGet($"{gamesPrefix}/pagination",
+        async (int page, int pageSize, IGamesRepository repository)
+            => await repository.GetWithPaginationAsync(page, pageSize));
 
         return app;
     }

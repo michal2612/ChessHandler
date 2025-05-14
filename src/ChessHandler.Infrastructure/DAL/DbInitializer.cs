@@ -11,15 +11,8 @@
         {
             using var scope = serviceProvider.CreateScope();
             var service = scope.ServiceProvider.GetRequiredService<LichessGamesDbContext>();
-
-            if (service.Database.CanConnect())
-            {
-                service.Database.Migrate();
-            }
-            else
-            {
-                throw new DbConnectionFailed($"Cannot connect to database.");
-            }
+            
+            service.Database.Migrate();
             
             return Task.CompletedTask;
         }

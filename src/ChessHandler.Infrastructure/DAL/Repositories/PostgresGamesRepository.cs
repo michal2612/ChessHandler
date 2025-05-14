@@ -19,6 +19,17 @@ internal sealed class PostgresGamesRepository(LichessGamesDbContext dbContext)
             .Take((int)max).
             ToListAsync();
 
+    public async Task<IEnumerable<Game>> GetWithPaginationAsync(int page, int pageSize)
+    {
+        var games = await _games
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Include(g => g.White)
+            .Include(g => g.Black)
+            .ToListAsync();
+        return games;
+    }
+
     public async Task AddAsync(Game game)
     {
         await _games.AddAsync(game);

@@ -17,6 +17,15 @@ internal sealed class InMemoryGamesRepository : IGamesRepository
         return Task.FromResult<IEnumerable<Game>>(_games);
     }
 
+    public Task<IEnumerable<Game>> GetWithPaginationAsync(int page, int pageSize)
+    {
+        var games = _games
+            .OrderByDescending(g => g.Id)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize);
+        return Task.FromResult<IEnumerable<Game>>(games);
+    }
+
     public Task AddAsync(Game game)
     {
         _games.Add(game);
