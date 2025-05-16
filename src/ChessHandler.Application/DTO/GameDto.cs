@@ -6,9 +6,9 @@ public class GameDto
 {
     public bool Rated { get; set; }
 
-    public GamePlayerDto White { get; set; }
+    public GamePlayerDto White { get; set; } = null!;
 
-    public GamePlayerDto Black { get; set; }
+    public GamePlayerDto Black { get; set; } = null!;
     
     public GameResult Result { get; set; }
     

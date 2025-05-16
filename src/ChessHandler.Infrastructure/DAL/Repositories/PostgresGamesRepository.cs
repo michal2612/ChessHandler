@@ -10,10 +10,11 @@ internal sealed class PostgresGamesRepository(LichessGamesDbContext dbContext)
     private readonly DbSet<Game> _games = dbContext.Games;
 
     public async Task<Game> GetAsync(int gameId)
-        => await _games.SingleOrDefaultAsync(g => g.Id == gameId);
+        => await _games.FindAsync(gameId);
 
     public async Task<IEnumerable<Game>> GetAllAsync(DateTime since, uint max = 100)
         => await _games
+            .AsNoTracking()
             .Include(g => g.White)
             .Include(g => g.Black)
             .Take((int)max).
@@ -22,6 +23,7 @@ internal sealed class PostgresGamesRepository(LichessGamesDbContext dbContext)
     public async Task<IEnumerable<Game>> GetWithPaginationAsync(int page, int pageSize)
     {
         var games = await _games
+            .AsNoTracking()
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .Include(g => g.White)

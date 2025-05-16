@@ -14,5 +14,5 @@ public class Game
     
     public GameFormat Format { get; set; }
 
-    public string Moves { get; set; }
+    public string Moves { get; set; } = null!;
 }
