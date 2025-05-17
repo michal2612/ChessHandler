@@ -24,6 +24,7 @@ internal static class Extensions
         services.AddHostedService<DbInitializer>();
         
         services.AddScoped<IGamesRepository, PostgresGamesRepository>();
+        services.Decorate<IGamesRepository, CachedGamesRepository>();
         
         return services;
     }

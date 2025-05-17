@@ -9,8 +9,7 @@ internal sealed class PostgresGamesRepository(LichessGamesDbContext dbContext)
 {
     private readonly DbSet<Game> _games = dbContext.Games;
 
-    public async Task<Game> GetAsync(int gameId)
-        => await _games.FindAsync(gameId);
+    public async Task<Game> GetAsync(int gameId) => await _games.FindAsync(gameId);
 
     public async Task<IEnumerable<Game>> GetAllAsync(DateTime since, uint max = 100)
         => await _games

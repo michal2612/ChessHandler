@@ -3,7 +3,6 @@ using ChessHandler.Infrastructure.DAL;
 using ChessHandler.Infrastructure.NRedisStackExchange;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using StackExchange.Redis;
 
 namespace ChessHandler.Infrastructure;
 
@@ -13,8 +12,8 @@ public static class Extensions
     {
         services
             .AddPostgres(configuration)
-            .AddApp()
-            .AddNRedisStackExchangeRedis(configuration);
+            .AddRedis(configuration)
+            .AddApp();
         
         return services;
     }
@@ -29,23 +28,19 @@ public static class Extensions
         return options;
     }
 
-    private static IServiceCollection AddNRedisStackExchangeRedis(this IServiceCollection services,
+    private static IServiceCollection AddRedis(this IServiceCollection services,
         IConfiguration configuration)
     {
-        var options = configuration
-            .GetOptions<NRedisStackExchangeConfiguration>("NRedisStackExchange");
+        services.AddMemoryCache();
         
-        var redisConfig = ConfigurationOptions
-            .Parse(options.Configuration, true);
+        var redisConfig = configuration.GetOptions<RedisConfiguration>("redis");
 
-        services.AddSingleton<IConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect(redisConfig));
-        
-        services.AddSingleton(serviceProvider =>
+        services.AddStackExchangeRedisCache(options =>
         {
-            var multiplexer = serviceProvider.GetRequiredService<IConnectionMultiplexer>();
-            return multiplexer.GetDatabase();
+            options.Configuration = redisConfig.ConnectionString;
+            options.InstanceName = "ChessHandler_";
         });
-        
+
         return services;
     }
 }
