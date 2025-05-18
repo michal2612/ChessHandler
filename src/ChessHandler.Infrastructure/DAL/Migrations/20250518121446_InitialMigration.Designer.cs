@@ -3,6 +3,7 @@ using System;
 using ChessHandler.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChessHandler.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(PostgresDbContext))]
-    partial class LichessGamesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250518121446_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,13 +103,13 @@ namespace ChessHandler.Infrastructure.DAL.Migrations
             modelBuilder.Entity("ChessHandler.Core.Entities.Game", b =>
                 {
                     b.HasOne("ChessHandler.Core.Entities.Player", "Black")
-                        .WithMany()
+                        .WithMany("GamesAsBlack")
                         .HasForeignKey("BlackId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ChessHandler.Core.Entities.Player", "White")
-                        .WithMany()
+                        .WithMany("GamesAsWhite")
                         .HasForeignKey("WhiteId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -114,6 +117,13 @@ namespace ChessHandler.Infrastructure.DAL.Migrations
                     b.Navigation("Black");
 
                     b.Navigation("White");
+                });
+
+            modelBuilder.Entity("ChessHandler.Core.Entities.Player", b =>
+                {
+                    b.Navigation("GamesAsBlack");
+
+                    b.Navigation("GamesAsWhite");
                 });
 #pragma warning restore 612, 618
         }

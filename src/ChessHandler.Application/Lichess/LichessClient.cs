@@ -111,6 +111,7 @@ internal sealed class LichessClient : ILichessClient
         return format switch
         {
             "blitz" => Format.Blitz,
+            "rapid"  => Format.Rapid,
             _ => throw new ArgumentException($"Can't parse format {format}")
         };
     }
