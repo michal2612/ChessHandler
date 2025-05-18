@@ -12,5 +12,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /App
 COPY --from=build /App/out .
 
+EXPOSE 5089
+
 ENTRYPOINT ["dotnet", "ChessHandler.Api.dll"]
 

@@ -1,4 +1,4 @@
-namespace ChessHandler.Infrastructure.NRedisStackExchange;
+namespace ChessHandler.Infrastructure.Redis;
 
 public class RedisConfiguration
 {

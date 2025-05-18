@@ -1,5 +1,5 @@
 using ChessHandler.Infrastructure.DAL;
-using ChessHandler.Infrastructure.NRedisStackExchange;
+using ChessHandler.Infrastructure.Redis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,7 +7,7 @@ namespace ChessHandler.Infrastructure;
 
 public static class Extensions
 {
-    public static IServiceCollection AddInstrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services
             .AddPostgres(configuration)
