@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChessHandler.Infrastructure.DAL.Repositories;
 
-internal sealed class PostgresGamesRepository(LichessGamesDbContext dbContext)
+internal sealed class PostgresGamesRepository(PostgresDbContext dbContext)
     : IGamesRepository
 {
     private readonly DbSet<Game> _games = dbContext.Games;

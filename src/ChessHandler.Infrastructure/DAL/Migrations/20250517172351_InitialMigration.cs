@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -16,7 +17,9 @@ namespace ChessHandler.Infrastructure.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Title = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +37,11 @@ namespace ChessHandler.Infrastructure.DAL.Migrations
                     BlackId = table.Column<int>(type: "integer", nullable: false),
                     Result = table.Column<int>(type: "integer", nullable: false),
                     Format = table.Column<int>(type: "integer", nullable: false),
-                    Moves = table.Column<string>(type: "text", nullable: false)
+                    Moves = table.Column<string>(type: "text", nullable: false),
+                    Source = table.Column<int>(type: "integer", nullable: false),
+                    WhiteRating = table.Column<int>(type: "integer", nullable: false),
+                    BlackRating = table.Column<int>(type: "integer", nullable: false),
+                    PlayedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,6 +69,11 @@ namespace ChessHandler.Infrastructure.DAL.Migrations
                 name: "IX_Games_WhiteId",
                 table: "Games",
                 column: "WhiteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IDX_GamePlayer_Name",
+                table: "Players",
+                column: "Name");
         }
 
         /// <inheritdoc />

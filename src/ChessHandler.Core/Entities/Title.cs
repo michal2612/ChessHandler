@@ -1,6 +1,6 @@
 namespace ChessHandler.Core.Entities;
 
-public enum PlayerTitle
+public enum Title
 {
     None,
     

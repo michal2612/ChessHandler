@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChessHandler.Infrastructure.DAL;
 
-internal sealed class LichessGamesDbContext : DbContext
+internal sealed class PostgresDbContext : DbContext
 {
     public DbSet<Game> Games { get; set; }
 
-    public DbSet<GamePlayer> Players { get; set; }
+    public DbSet<Player> Players { get; set; }
 
-    public LichessGamesDbContext(DbContextOptions<LichessGamesDbContext> options)
+    public PostgresDbContext(DbContextOptions<PostgresDbContext> options)
         : base(options)
     {
     }

@@ -1,4 +1,3 @@
-using ChessHandler.Application;
 using ChessHandler.Infrastructure.DAL;
 using ChessHandler.Infrastructure.NRedisStackExchange;
 using Microsoft.Extensions.Configuration;
@@ -12,8 +11,7 @@ public static class Extensions
     {
         services
             .AddPostgres(configuration)
-            .AddRedis(configuration)
-            .AddApp();
+            .AddRedis(configuration);
         
         return services;
     }

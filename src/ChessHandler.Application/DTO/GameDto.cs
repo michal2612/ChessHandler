@@ -10,9 +10,11 @@ public class GameDto
 
     public GamePlayerDto Black { get; set; } = null!;
     
-    public GameResult Result { get; set; }
+    public Result Result { get; set; }
     
-    public GameFormat Format { get; set; }
+    public Format Format { get; set; }
 
     public string Moves { get; set; }
+    
+    public DateTime PlayedAt { get; set; }
 }

@@ -6,13 +6,25 @@ public class Game
 
     public bool Rated { get; set; }
 
-    public GamePlayer White { get; set; }
-
-    public GamePlayer Black { get; set; }
+    public int WhiteId { get; set; }
     
-    public GameResult Result { get; set; }
+    public Player White { get; set; } = null!;
     
-    public GameFormat Format { get; set; }
+    public int BlackId { get; set; }
+    
+    public Player Black { get; set; } = null!;
+    
+    public Result Result { get; set; }
+    
+    public Format Format { get; set; }
 
     public string Moves { get; set; } = null!;
+
+    public Source Source { get; set; }
+
+    public int WhiteRating { get; set; }
+
+    public int BlackRating { get; set; }
+
+    public DateTime PlayedAt { get; set; }
 }

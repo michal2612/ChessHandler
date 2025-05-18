@@ -18,13 +18,15 @@ internal static class Extensions
 
         var postgresOptions = configuration.GetOptions<PostgresOptions>(OptionsSectionName);
 
-        services.AddDbContext<LichessGamesDbContext>
+        services.AddDbContext<PostgresDbContext>
             (ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));
 
         services.AddHostedService<DbInitializer>();
         
         services.AddScoped<IGamesRepository, PostgresGamesRepository>();
         services.Decorate<IGamesRepository, CachedGamesRepository>();
+
+        services.AddScoped<IPlayersRepository, PostgresPlayersRepository>();
         
         return services;
     }

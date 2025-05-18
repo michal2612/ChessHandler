@@ -1,5 +1,4 @@
-    using ChessHandler.Infrastructure.Exceptions;
-    using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -10,7 +9,7 @@
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             using var scope = serviceProvider.CreateScope();
-            var service = scope.ServiceProvider.GetRequiredService<LichessGamesDbContext>();
+            var service = scope.ServiceProvider.GetRequiredService<PostgresDbContext>();
             
             service.Database.Migrate();
             

@@ -1,6 +1,6 @@
 namespace ChessHandler.Core.Entities;
 
-public enum GameResult
+public enum Result
 {
     Black,
     

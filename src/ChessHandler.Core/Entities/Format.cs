@@ -1,6 +1,6 @@
 namespace ChessHandler.Core.Entities;
 
-public enum GameFormat
+public enum Format
 {
     Bullet,
     

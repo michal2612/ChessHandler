@@ -1,12 +1,9 @@
 namespace ChessHandler.Core.Entities;
 
-public class GamePlayer
+public class Player
 {
     public int Id { get; set; }
-
     public string Name { get; set; } = null!;
 
-    public PlayerTitle Title { get; set; }
-
-    public int Rating { get; set; }
+    public Title Title { get; set; }
 }
