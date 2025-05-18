@@ -1,18 +1,18 @@
 using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-    namespace ChessHandler.Infrastructure.DAL;
+namespace ChessHandler.Infrastructure.DAL;
 
-    public class DbInitializer(IServiceProvider serviceProvider) : BackgroundService
+public class DbInitializer(IServiceProvider serviceProvider) : BackgroundService
+{
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            using var scope = serviceProvider.CreateScope();
-            var service = scope.ServiceProvider.GetRequiredService<PostgresDbContext>();
-            
-            service.Database.Migrate();
-            
-            return Task.CompletedTask;
-        }
+        using var scope = serviceProvider.CreateScope();
+        var service = scope.ServiceProvider.GetRequiredService<PostgresDbContext>();
+
+        service.Database.Migrate();
+
+        return Task.CompletedTask;
     }
+}
