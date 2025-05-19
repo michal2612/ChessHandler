@@ -4,10 +4,10 @@ using MediatR;
 
 namespace ChessHandler.Application.Members.Commands.AddGame;
 
-public class UpdateLichessGamesHandler(IGamesRepository gamesRepository,ILichessClient  lichessClient)
-    : IRequestHandler<UpdateLichessGames>
+public class UpdateLichessGamesCommandHandler(IGamesRepository gamesRepository, ILichessClient  lichessClient)
+    : IRequestHandler<UpdateLichessGamesCommand>
 {
-    public async Task Handle(UpdateLichessGames request, CancellationToken _)
+    public async Task Handle(UpdateLichessGamesCommand request, CancellationToken _)
     {
         // add proper validation
         if (string.IsNullOrEmpty(request.Username))

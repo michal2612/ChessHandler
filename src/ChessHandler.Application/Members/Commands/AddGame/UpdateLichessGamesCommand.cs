@@ -2,4 +2,4 @@ using MediatR;
 
 namespace ChessHandler.Application.Members.Commands.AddGame;
 
-public sealed record UpdateLichessGames(string Username) : IRequest;
+public sealed record UpdateLichessGamesCommand(string Username) : IRequest;

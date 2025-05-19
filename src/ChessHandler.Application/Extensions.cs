@@ -11,7 +11,7 @@ public static class Extensions
         services.AddScoped<ILichessClient, LichessClient>();
         
         services.AddMediatR(cfg 
-            => cfg.RegisterServicesFromAssembly(typeof(UpdateLichessGamesHandler).Assembly));
+            => cfg.RegisterServicesFromAssembly(typeof(UpdateLichessGamesCommandHandler).Assembly));
         return services;
     }
 }

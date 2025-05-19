@@ -10,10 +10,7 @@ builder.Services
     .AddApp()
     .AddInfrastructure(builder.Configuration);
 
-builder.Host.UseSerilog((context, configuration) =>
-{
-    configuration.ReadFrom.Configuration(context.Configuration);
-});
+builder.Host.AddSerilog();
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
